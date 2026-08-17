@@ -8,18 +8,9 @@
 body {
     margin: 0;
     font-family: "Trebuchet MS", system-ui, sans-serif;
-
-    /* HELLER NACHT-HIMMEL FARBVERLAUF */
-    background: linear-gradient(
-        180deg,
-        #1a2758,
-        #233a7a,
-        #2f4aa0,
-        #0a0f2c
-    );
+    background: linear-gradient(180deg,#1a2758,#233a7a,#2f4aa0,#0a0f2c);
     background-attachment: fixed;
     background-size: cover;
-
     color: #fff;
     overflow-x: hidden;
 }
@@ -37,69 +28,30 @@ body {
     z-index: 100;
 }
 
-/* Holz-Button-Stil */
+/* Holz-Buttons */
 .tab-btn {
     padding: 15px 35px;
     font-size: 24px;
     font-weight: bold;
     border: none;
     border-radius: 18px;
-
-    background: linear-gradient(180deg, #d49a5c, #9c6a33);
+    background: linear-gradient(180deg,#d49a5c,#9c6a33);
     color: #ffe98a;
     text-shadow: 2px 2px 0px #000;
-
-    box-shadow:
-        0 0 0 4px #5a3a1a inset,
-        0 0 15px rgba(0,0,0,0.6),
-        0 6px 0 #5a3a1a;
-
+    box-shadow: 0 0 0 4px #5a3a1a inset,0 0 15px rgba(0,0,0,0.6),0 6px 0 #5a3a1a;
     cursor: pointer;
-    transition: transform 0.15s, box-shadow 0.15s;
-    position: relative;
-
+    transition: transform 0.15s;
     display: flex;
     align-items: center;
     gap: 10px;
 }
+.tab-btn:hover { transform: scale(1.08); }
+.tab-active { background: linear-gradient(180deg,#ffcc66,#c68c53); }
 
-/* Ranken-Effekt */
-.tab-btn::before {
-    content: "";
-    position: absolute;
-    top: -8px;
-    left: -8px;
-    width: 120%;
-    height: 120%;
-    background: url('https://i.imgur.com/8eQJYkP.png');
-    background-size: cover;
-    opacity: 0.35;
-    pointer-events: none;
-}
+/* Seiten */
+.page { display: none; padding: 40px; }
 
-/* Hover */
-.tab-btn:hover {
-    transform: scale(1.08);
-    box-shadow:
-        0 0 0 4px #5a3a1a inset,
-        0 0 25px rgba(255,255,0,0.7),
-        0 6px 0 #5a3a1a;
-}
-
-/* Aktiver Tab */
-.tab-active {
-    background: linear-gradient(180deg, #ffcc66, #c68c53);
-    color: #fff;
-    text-shadow: 2px 2px 0px #000;
-}
-
-/* SEITEN */
-.page {
-    display: none;
-    padding: 40px;
-}
-
-/* GAME */
+/* Gegner */
 .enemy-box {
     margin: 20px auto;
     padding: 20px;
@@ -109,81 +61,43 @@ body {
     border-radius: 20px;
     box-shadow: 0 0 20px white;
     transition: transform 0.2s;
-
     user-select: none;
 }
+.enemy-box * { user-select: none; }
+.enemy-box:hover { transform: scale(1.05); cursor: pointer; }
+.enemy-img { width: 100%; height: auto; }
 
-.enemy-box * {
-    user-select: none;
-}
-
-.enemy-box:hover {
-    transform: scale(1.05);
-    cursor: pointer;
-}
-
-/* Gegnerbild */
-.enemy-img {
-    width: 100%;
-    height: auto;
-    pointer-events: none;
-    user-select: none;
-}
-
-.enemy-color-layer {
-    height: 10px;
-    margin-top: 10px;
-    background: linear-gradient(90deg, white, black, blue, red, purple);
-    border-radius: 5px;
-}
-
-.enemy-hp {
-    margin-top: 10px;
-    font-size: 20px;
-}
-
-/* ⭐ HELLERE MINECRAFT XP LEISTE */
-.mc-xp-container {
-    margin-bottom: 20px;
-    text-align: center;
-}
+/* ⭐ PIXELIGE MINECRAFT XP LEISTE */
+.mc-xp-container { margin-bottom: 20px; text-align: center; }
 
 .mc-xp-bar {
     width: 100%;
-    height: 22px;
-    background: #4a4a4a; /* heller */
-    border: 3px solid #1a1a1a; /* heller Rahmen */
-    border-radius: 12px;
-    overflow: hidden;
+    height: 24px;
+    background: #3a3a3a;
+    border: 4px solid #000;
+    border-radius: 6px;
+    image-rendering: pixelated;
     box-shadow: inset 0 0 4px #000;
 }
 
 #mcXpFill {
     height: 100%;
     width: 0%;
-    background: #00ff4a; /* helleres Minecraft-Grün */
-    transition: width 0.3s ease;
+    background: #00ff00;
+    image-rendering: pixelated;
+    transition: width 0.3s steps(6);
+    box-shadow: inset 0 0 4px #003300;
 }
 
 #mcXpText {
     margin-top: 6px;
-    font-size: 20px;
+    font-size: 22px;
     font-weight: bold;
-    color: #00ff4a; /* heller */
-    text-shadow: 0 0 4px #00ff4a;
+    color: #00ff00;
+    text-shadow: 0 0 4px #00ff00;
 }
 
-/* TAGEBUCH */
-.card {
-    background: rgba(0,0,0,0.55);
-    border: 3px solid #ffea00;
-    border-radius: 20px;
-    padding: 20px;
-    box-shadow: 0 0 25px rgba(255,255,0,0.4);
-    backdrop-filter: blur(8px);
-    margin: 20px;
-}
-
+/* Tagebuch */
 .entry {
     background: rgba(0,0,0,0.6);
     border: 2px solid #ffea00;
@@ -193,6 +107,19 @@ body {
     box-shadow: 0 0 15px rgba(255,255,0,0.4);
     position: relative;
 }
+
+/* Delete Button */
+.delete-btn {
+    background: #ff4444;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 8px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    float: right;
+}
+.delete-btn:hover { background: #ff0000; }
 </style>
 </head>
 
@@ -204,13 +131,8 @@ body {
 
 <!-- TAB BAR -->
 <div id="tabBar">
-    <button class="tab-btn tab-active" onclick="openTab('gamePage', this)">
-        🎮 PLAY
-    </button>
-
-    <button class="tab-btn" onclick="openTab('diaryPage', this)">
-        📘 DIARY
-    </button>
+    <button class="tab-btn tab-active" onclick="openTab('gamePage', this)">🎮 PLAY</button>
+    <button class="tab-btn" onclick="openTab('diaryPage', this)">📘 DIARY</button>
 </div>
 
 <!-- SPIEL -->
@@ -218,19 +140,14 @@ body {
     <h2>Cat vs Enemy – Minigame</h2>
 
     <div class="enemy-box" onclick="hitEnemy()">
-
         <img src="img/enemy.png" class="enemy-img">
-
         <h3 id="enemyName">Bun Bun Black</h3>
-        <div class="enemy-color-layer"></div>
         <div class="enemy-hp" id="enemyHp">HP: 100</div>
     </div>
 
     <div class="mc-xp-container">
-        <div class="mc-xp-bar">
-            <div id="mcXpFill"></div>
-        </div>
-        <div id="mcXpText">0 XP</div>
+        <div class="mc-xp-bar"><div id="mcXpFill"></div></div>
+        <div id="mcXpText">Level 1 – 0 / 100 XP</div>
     </div>
 </section>
 
@@ -263,18 +180,20 @@ body {
 </section>
 
 <script>
-/* TAB SWITCH */
+/* Tabs */
 function openTab(page, btn) {
     document.querySelectorAll('.page').forEach(p => p.style.display = "none");
     document.getElementById(page).style.display = "block";
-
     document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove("tab-active"));
     btn.classList.add("tab-active");
 }
 
 /* GAME */
 let enemyHp = 100;
+
 let xp = 0;
+let level = 1;
+let xpNeeded = 100; // XP für Level 1
 
 const enemies = ["Bun Bun Black", "Kory", "Bore", "Le’Grim", "R. Ost"];
 
@@ -283,8 +202,7 @@ function hitEnemy() {
     document.getElementById("soundXp").play();
     document.getElementById("enemyHp").textContent = "HP: " + enemyHp;
 
-    xp += 5;
-    updateXp();
+    gainXp(5);
 
     if (enemyHp <= 0) {
         const newEnemy = enemies[Math.floor(Math.random() * enemies.length)];
@@ -294,10 +212,20 @@ function hitEnemy() {
     }
 }
 
-function updateXp() {
-    const percent = Math.min(xp, 100);
+function gainXp(amount) {
+    xp += amount;
+
+    if (xp >= xpNeeded) {
+        xp = 0;          // XP reset
+        level++;         // Level steigt
+        xpNeeded += 50;  // Mehr XP pro Level
+    }
+
+    const percent = (xp / xpNeeded) * 100;
+
     document.getElementById("mcXpFill").style.width = percent + "%";
-    document.getElementById("mcXpText").textContent = xp + " XP";
+    document.getElementById("mcXpText").textContent =
+        `Level ${level} – ${xp} / ${xpNeeded} XP`;
 }
 
 /* TAGEBUCH */
@@ -317,20 +245,29 @@ document.getElementById("addEntryBtn").addEventListener("click", () => {
     renderEntries();
 });
 
+function deleteEntry(index) {
+    entries.splice(index, 1);
+    renderEntries();
+}
+
 function renderEntries() {
     entryList.innerHTML = "";
 
-    for (const e of entries) {
+    entries.forEach((e, i) => {
         const div = document.createElement("div");
         div.className = "entry";
+
         div.innerHTML = `
+            <button class="delete-btn" onclick="deleteEntry(${i})">Löschen</button>
             <strong>${e.day}</strong><br>
             ${e.highlight ? "✨ Highlight: " + e.highlight + "<br>" : ""}
             ${e.lowlight ? "👹 Lowlight: " + e.lowlight + "<br>" : ""}
+            Stimmung: ${e.score}/10<br>
             ${e.note ? "📝 " + e.note : ""}
         `;
+
         entryList.appendChild(div);
-    }
+    });
 }
 </script>
 
